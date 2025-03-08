@@ -15,3 +15,6 @@ If you are developing a production application, we recommend using TypeScript an
 # 创建项目
 npm create vite@latest my-react-demo --template react
 
+npm install
+
+npm run dev
