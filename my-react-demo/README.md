@@ -18,3 +18,6 @@ npm create vite@latest my-react-demo --template react
 npm install
 
 npm run dev
+
+路由  
+npm install react-router-dom
