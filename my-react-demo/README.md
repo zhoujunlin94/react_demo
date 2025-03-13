@@ -21,3 +21,9 @@ npm run dev
 
 路由  
 npm install react-router-dom
+
+请求
+npm install axios
+
+ui组件
+npm install antd 
