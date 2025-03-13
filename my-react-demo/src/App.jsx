@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Table, Form, Input, Button, Modal, message, Pagination } from "antd";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://t-luffy.gaodunwangxiao.com";
-
 const ConfigPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
