@@ -1,24 +1,37 @@
+import { useImmer } from 'use-immer'
 
-function Button({handleClick, children}){
-  return (
-    <button onClick={e=>{
-      e.stopPropagation()
-      handleClick();
-    }}>{children}</button>
-  );
-}
+export default function Form(){
+  const [person, updatePerson] = useImmer({
+      firstName: 'zhou',
+      lastName: 'junlin',
+      email: 'zhoujunlin.work@gmail.com',
+    })
 
-
-export default function Toolbar(){
-
-  function click(){
-    alert('已上传')
+  function handleChange(e){
+    updatePerson(draft => {
+      draft[e.target.name] = e.target.value
+    })
   }
 
   return (
-    <div className="Toolbar" onClick={()=>alert("点击Toolbar")}>
-        <Button handleClick={()=> alert('已播放')}>播放电影</Button>
-        <Button handleClick={click}>上传图片</Button>
-    </div>
+    <>
+      <label>
+        FirstName:
+        <input name="firstName" value={person.firstName} onChange={handleChange}/>
+      </label>
+      <label>
+        LastName:
+        <input name="lastName" value={person.lastName} onChange={handleChange}/>
+      </label>
+      <label>
+        Email:
+        <input name="email" value={person.email} onChange={handleChange}/>
+      </label>
+      <p>
+        {person.firstName}{'  '}
+        {person.lastName}{'  '}
+        ({person.email})
+      </p>
+    </>
   );
 }
