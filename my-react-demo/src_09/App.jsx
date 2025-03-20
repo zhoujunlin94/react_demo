@@ -1,47 +1,26 @@
 import { useReducer } from 'react';
 import AddTask from './a/AddTask.jsx';
 import TaskList from './a/TaskList.jsx';
+import {TaskContext, DispatchContext} from './a/Context.jsx'
 
 export default function TaskApp() {
-  const [tasks, dispatch] = useReducer(
-    tasksReducer,
-    initialTasks
-  );
-
-  function handleAddTask(text) {
-    dispatch({
-      type: 'added',
-      id: nextId++,
-      text: text,
-    });
-  }
-
-  function handleChangeTask(task) {
-    dispatch({
-      type: 'changed',
-      task: task
-    });
-  }
-
-  function handleDeleteTask(taskId) {
-    dispatch({
-      type: 'deleted',
-      id: taskId
-    });
-  }
-
   return (
-    <>
+    <TaskProvider>
       <h1>Day off in Kyoto</h1>
-      <AddTask
-        onAddTask={handleAddTask}
-      />
-      <TaskList
-        tasks={tasks}
-        onChangeTask={handleChangeTask}
-        onDeleteTask={handleDeleteTask}
-      />
-    </>
+      <AddTask />
+      <TaskList />
+    </TaskProvider>
+  )
+}
+
+function TaskProvider({children}){
+  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+  return (
+    <DispatchContext.Provider value={dispatch}>
+      <TaskContext.Provider value={tasks}>
+        {children}
+      </TaskContext.Provider>
+    </DispatchContext.Provider>
   );
 }
 
@@ -72,7 +51,6 @@ function tasksReducer(tasks, action) {
   }
 }
 
-let nextId = 3;
 const initialTasks = [
   { id: 0, text: 'Philosopher’s Path', done: true },
   { id: 1, text: 'Visit the temple', done: false },
