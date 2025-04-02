@@ -8,7 +8,6 @@ import {
   HomeOutlined,
   LogoutOutlined,
 } from '@ant-design/icons';
-import logo from '../../assests/logo.png';
 
 const { Header, Sider, Content } = Layout;
 
@@ -54,19 +53,9 @@ const Home = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          borderBottom: '1px solid #f0f0f0',
-          padding: '0 16px' // 添加内边距
+          borderBottom: '1px solid #f0f0f0'
         }}>
-        <img 
-        src={logo} 
-        alt="系统LOGO"
-        style={{
-            width: '100%',      // 宽度自适应容器
-            height: 'auto',     // 高度自动
-            maxWidth: 120,      // 最大宽度限制
-            objectFit: 'contain' // 保持图片比例
-        }}
-        />
+          <h2 style={{ margin: 0 }}> MEET </h2>
         </div>
         <Menu
           mode="inline"
