@@ -1,0 +1,12 @@
+:root {
+    --sider-bg: #fff;
+    --menu-text-color: rgba(0, 0, 0, 0.75);
+  }
+  
+  .ant-layout-sider {
+    background: var(--sider-bg) !important;
+  }
+
+  .ant-layout-sider {
+    transition: all 0.2s ease;
+  }
